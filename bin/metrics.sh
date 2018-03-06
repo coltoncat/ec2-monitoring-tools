@@ -3,7 +3,7 @@
 namespace="maxclem/ec2"
 InstanceID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone/)
-region=${region::-1}
+region=${region%?}
 processors=$(grep -c processor /proc/cpuinfo)
 timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
